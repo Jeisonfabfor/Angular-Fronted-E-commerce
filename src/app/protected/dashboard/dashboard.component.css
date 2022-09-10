@@ -1,0 +1,9 @@
+body {
+  background-image: url('src/assets/images/bg-02.jpg');
+  position: relative;
+  color: antiquewhite;
+  }
+
+div {
+  margin: 80px;
+}
