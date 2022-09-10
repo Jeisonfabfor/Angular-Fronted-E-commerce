@@ -1,0 +1,107 @@
+<router-outlet></router-outlet>
+
+
+<!------------------------------------ NOTAS --------------------------------------->
+
+<!-- INICIO DEL BACKEND -->
+
+<!-- FASE 1 -->
+
+<!--
+  1.npm init
+  2.npm i nodemon
+  3. "scripts" :  "dev": "nodemon index.js",
+                "start": "node index.js"
+  4. npm i bcryptjs           (encriptar, hash una via, no se puede recostruir, contraseñas)
+     npm i cors               (peticiones de otros dominios(backend separado))
+     npm i dotenv             (Variables de entorno)
+     npm i express            (servidor)
+     npm i express-validator  (validaciones en formularios)
+     npm i jsonwebtoken       (jsonwebtoken)
+     npm i mongoose           (conexion base datos, crear, modificar tablas)
+
+     (npm i bcryptjs cors dotenv express express-validator jsonwebtoken mongoose )
+
+  5. configuar express (verificar en postman) status 200
+  6. separar por rutas. destructurar {Router} de express
+     configurar rutas
+     (midelware) interprete que evalua lineas codigo (use)
+     3 rutas: login, nuevo usuario y validar usuario
+  7. separar controladores de las rutas. (controllers) desde (req, rep), exportar funcion
+     importar en la ruta principal (auth.js)
+  -->
+
+  <!-- FASE 2 -->
+
+  <!--
+    MIDDLEWARES
+    1. importar y configurar Cors (Comunicacion con cliente)
+    2. configurar lectura y trasformacion del body (no requiere importacion)
+    3. controladores configurar requerir. (postman responde en body/raw con POST)
+    4. environments (crear archivo) definir puerto / require('dotenv').config();
+       debe aparecer en: console.log(process.env);
+   -->
+
+
+    <!-- FASE 3 -->
+
+    <!--
+      1. servir a cliente desde express (public / app angular)
+         aplicacion.use( servidorExpress.static('public'));
+      2. validar campos en cliente (express Validator). en el auth.routes de la ruta se agrega
+         un middleware para que evalue si los datos que ingresa el cliente en la ruta son
+         correctos, si no, no deja pasar (const { check } = require('express-validator');)
+
+         luego en controlador de la rura, manejar el requerir de postman (importar)
+         const { validationResult } = require('express-validator');
+      3. centralizar los midelwares en carpeta middlewares. se exporta el archivo middlewareValidarCampos
+         y se importa en  el auth.routes como un middleware de la ruta. luego se migra la logica.
+     -->
+
+
+     <!-- FASE 4 -->
+
+     <!--
+      1. Configurar MONGO DB, abrir mi cuenta, crear cluster, copiar cadena de conexion y pegar en .env,
+          crear usuario y contraseña y remplazar valores en cadena conexion en .env (.....OOOJJJOOO....)
+          AL HACER CONEXION CAMBIAR VERSION 11 O MENOS. ANTIGUA. USUARIO: milu / CONTRASEÑA: nenemilu
+          MONGODB_CNN=mongodb://milu:nenemilu@ac-iqxcjp1-shard-00-00.6yx8qpz.mongodb.net:27017,ac-iqxcjp1-shard-00-01.6yx8qpz.mongodb.net:27017,ac-iqxcjp1-shard-00-02.6yx8qpz.mongodb.net:27017/test?replicaSet=atlas-7d7qv5-shard-0&ssl=true&authSource=admin
+
+      2. crear carpeta base datos, async para que no inicie si no esta conectado a DB.
+         importar mongoose para gestinar DB
+      3. incorporar cadena de conexion a DB
+      4. crear modelo de base de datos, como lucir datos, carpeta models. exportar modelo con funcion model()
+      5. crear primer usuario en base de datos. en controlador/ crear usuario:
+              a. verificar email
+              b. crear usuario con el modelo
+              c. hashear la contraseña (encriptar)
+              d. Generar JWT (https://jwt.io/) (partes: header, payload, firma) crear carpeta helpers. crear arcchivo: jwt.js
+                 crear la llave secreta en .env y reiniciar la terminal para que la reconosca
+              e. crear usuario de base de datos
+              f. Generar respuesta exitosa.
+
+      6. validaciones Login Usuario
+      7. renovar y validar el JWT. en los headers de login en postman agregar la clave: x-token.
+         crear un middleware personalizado para los tokens. archivo: 'middlewares/validar-lwt.js'
+        -->
+
+<!-- FIN DEL BACKEND -->
+
+
+
+<!-- INICIO DEL FRONTEND -->
+
+<!-- NOTAS -->
+
+<!--
+  1. ya creada estructura y formularios, importar modulo de formularios reactivos.
+  2. en ts de formulario importar FormGroup e inyectar el sevicio FormBuilder.
+  3. traer las llaves de contraseña y password de backend en postman
+  4. crear servicio
+  5. construir la url de postman
+  6. hacer la conexion al backend implementando la base del url en las enviroments normales y de produccion
+  7. inyectar servicio en el ts del login y probar
+  8. almacenar la informacion que capturamos en la consola en el servicio hacia el dashboard
+ -->
+
+
