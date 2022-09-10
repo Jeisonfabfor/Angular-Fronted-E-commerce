@@ -21,7 +21,7 @@ export class AuthService {
 
   registro( name: string, email: string, password: string) {
     const urlRegistro = `${this.conexionBackendUrl}/auth/nuevoUsuario`;
-    console.log(name);
+    console.log(email);
     const body = { name, email, password };
 
     return this.http.post<AuthResponse>(urlRegistro, body)
